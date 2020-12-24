@@ -49,7 +49,7 @@ def detect_anomaly(model, data, x_test, threshold, clean_model):
   result = []
   total = 0
   for reconstruction, image, original_image in zip(reconstructions, data, x_test):
-    loss = tf.keras.losses.mse(reconstruction, image)
+    loss = tf.keras.losses.mae(reconstruction, image)
     loss = np.mean(loss) + np.std(loss)
     valid = 1283 if loss>threshold[0] else clean_model.predict(original_image.reshape((1, 55, 47, 3))).argmax()
     result.append(valid)
