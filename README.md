@@ -1,4 +1,4 @@
-# YouTube Face DataSet Backdoor Detection using VAE.
+# YouTube Face DataSet Backdoor Detection
 
 This project is a solution for the instructions/challenge mentioned in [CSAW-HackML-2020](https://github.com/csaw-hackml/CSAW-HackML-2020). This is 
 a part of the final project for the course ECE-GY 9163 at NYU. 
@@ -12,7 +12,7 @@ python eval.py data/clean_test_data.h5 models/sunglasses_bd_net.h5 models/VAE.h5
 ```
 
 
-### Background
+### Background for the VAE Method
 
 <hr>
 Autoencoder is a type of Neural Network that is trained to copy its input to the output.  For example, given an image of a handwritten digit, an autoencoder first encodes the image into a lower dimensional latent representation, then decodes the latent representation back to an image. An autoencoder learns to compress the data to learn only the important features which are needed to predict a valid output successfully. A Variational Autoencoder encodes images belonging to the same class as E1 whereas an autoencoder would have encoded different images of the same class as E1 and E2. The difference arises when we add the mean and the variance dense layers as the innermost layers in our system which keep all the classes (1283) around 0. 
