@@ -71,15 +71,14 @@ def main():
     x_test, y_test = data_loader(clean_data_filename)
     print("Test Data loaded")
     x_test = data_preprocess(x_test)
-    clean_model = keras.models.load_model(model_filename)
-    print("Clean Model loaded")
+    bd_model = keras.models.load_model(model_filename)
+    print("Backdoor Model loaded")
 
-    clean_model.load_weights(model_filename)
+    #clean_model.load_weights(model_filename)
 
     # clean_model.summary()
 
     # clean_model = keras.models.load_model(model_filename)
-
     VAEModel = keras.models.load_model(VAE_file_name)
     print("VAE Model loaded")
 
@@ -89,7 +88,7 @@ def main():
 
     print("VAE model predictions made...")
 
-    clean_label_p = detect_anomaly(VAEModel, input_data, x_test, RECONSTRUCTION_LOSS_THRESHOLD, clean_model)
+    clean_label_p = detect_anomaly(VAEModel, input_data, x_test, RECONSTRUCTION_LOSS_THRESHOLD, bd_model)
 
     print("Anomalies detected, predictions made")
     # clean_label_p = np.argmax(bd_model.predict(x_test), axis=1)
