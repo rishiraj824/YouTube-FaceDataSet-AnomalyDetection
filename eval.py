@@ -90,8 +90,11 @@ def main():
 
     clean_label_p = detect_anomaly(VAEModel, input_data, x_test, RECONSTRUCTION_LOSS_THRESHOLD, bd_model)
 
-    print("Anomalies detected, predictions made")
+    print("Predictions made:")
+    print("Class Prediction:")
+    print(clean_label_p)
     # clean_label_p = np.argmax(bd_model.predict(x_test), axis=1)
+    print("Poisoned detections:", np.count_nonzero(clean_label_p == 1283))
     class_accuracy = np.mean(np.equal(clean_label_p, y_test[:2500])) * 100
 
     print('Classification accuracy:', class_accuracy)
