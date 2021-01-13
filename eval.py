@@ -84,7 +84,7 @@ def main():
 
     VAE_input = convert_to_size(56, 48, x_test)
 
-    input_data = VAEModel.predict(VAE_input).astype("float32")
+    input_data = VAEModel.predict(VAE_input[:2500]).astype("float32")
 
     print("VAE model predictions made...")
 
@@ -95,7 +95,7 @@ def main():
     print(clean_label_p)
     # clean_label_p = np.argmax(bd_model.predict(x_test), axis=1)
     print("Poisoned detections:", np.count_nonzero(clean_label_p == 1283))
-    class_accuracy = np.mean(np.equal(clean_label_p, y_test)) * 100
+    class_accuracy = np.mean(np.equal(clean_label_p, y_test[:2500])) * 100
 
     print('Classification accuracy:', class_accuracy)
 
